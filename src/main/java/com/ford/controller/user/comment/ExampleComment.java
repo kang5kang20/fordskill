@@ -10,4 +10,6 @@ public class ExampleComment {
 	public static final String EXAM_EXAMADDRESS = "https://ks.wjx.top/jq/26433046.aspx?sojumpparm=";
 	
 	public static final String EXAM_SHOWRUWEI_TIME = "2018-08-31 00:00:00";
+	
+	public static final String REGIS_END_TIME = "2018-08-20 23:59:59";
 }

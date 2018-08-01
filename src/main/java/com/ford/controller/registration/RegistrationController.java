@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ford.controller.user.comment.ExampleComment;
 import com.ford.dao.base.CallMapper;
 import com.ford.entity.login.LoginSessionVO;
 import com.ford.entity.login.LoginVO;
@@ -54,6 +55,12 @@ public class RegistrationController {
 		
 		if(null == loginSessionVO){
 			return "redirect:/login/forwardLogin.action";
+		}
+		//报名时间截止
+		if(DateUtil.compareToday(ExampleComment.REGIS_END_TIME)) {
+			//返回考试已经结束界面
+			model.addAttribute("msg", "报名已经结束了哦！");
+			return "exam/infotip";
 		}
 		//经销商编码已经报名
 		FordRegistrationExample fordRegistrationExample = new FordRegistrationExample();
