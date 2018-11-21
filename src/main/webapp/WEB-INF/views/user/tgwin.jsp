@@ -138,6 +138,7 @@
 			preload="auto" src="${basepath}/static/music/h5a.mp3" loop="loop"></audio>
 		<!--<img src="img/c1.png" style="position:absolute;bottom:0;left:0;width:100%"/>-->
 	</div>
+	<input id="iswin" value="${winflag}" type="hidden"></input>
 <script type="text/javascript"  src="${basepath}/static/js/jquery-1.9.1.js"></script>
 <script type="text/javascript"> 
 autoPlayMusic();
