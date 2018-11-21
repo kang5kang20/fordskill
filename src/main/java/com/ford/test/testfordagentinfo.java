@@ -26,7 +26,7 @@ public class testfordagentinfo {
 	@Test
 	public void testAdd(){
 		try {
-			DataInputStream in = new DataInputStream(new FileInputStream(new File("E:/私人文件/二手车代码交接/经销商信息表测试用.csv")));
+			DataInputStream in = new DataInputStream(new FileInputStream(new File("E:/私人文件/二手车代码交接/606.csv")));
 			BufferedReader br= new BufferedReader(new InputStreamReader(in,"GBK"));
 			 String line = null;  
 			 int i = 1;
@@ -34,11 +34,8 @@ public class testfordagentinfo {
 	                String item[] = line.split(",");//CSV格式文件为逗号分隔符文件，这里根据逗号切分 
 	                FordAgentinfo fordAgentinfo = new FordAgentinfo();
 	                fordAgentinfo.setRegion(item[0]);
-	                fordAgentinfo.setProvince(item[1]);
-	                fordAgentinfo.setCity(item[2]);
-	                fordAgentinfo.setCode(item[3]);
-	                fordAgentinfo.setAbbreviation(item[4]);
-	                fordAgentinfo.setName(item[5]);
+	                fordAgentinfo.setAbbreviation(item[1]);
+	                fordAgentinfo.setCode(item[2]);
 	                fordagentinfoService.addInfo(fordAgentinfo);
 	                System.out.println("添加第"+i+"条信息");
 	                i++;
@@ -50,7 +47,7 @@ public class testfordagentinfo {
 	}
 	
 	public static void main(String[] args) {
-		String url = "http://127.0.0.1:8080/fordskill/fordexhibition/forwardAdd.act";
+		String url = "http://127.0.0.1:8080/fordskill/fordexhibition/forwardAddc.act";
 		String request = "";
 		try {
 			String json = HttpTestUtils.testHttpConnection(url, "POST", request);

@@ -136,9 +136,9 @@
 		</div>
 			<audio style="display: block !important; " id="bg-music"
 			preload="auto" src="${basepath}/static/music/h5a.mp3" loop="loop"></audio>
+			<input id="iswin" value="${winflag}" type="hidden"></input>
 		<!--<img src="img/c1.png" style="position:absolute;bottom:0;left:0;width:100%"/>-->
 	</div>
-	<input id="iswin" value="${winflag}" type="hidden"></input>
 <script type="text/javascript"  src="${basepath}/static/js/jquery-1.9.1.js"></script>
 <script type="text/javascript"> 
 autoPlayMusic();
@@ -146,7 +146,7 @@ autoPlayMusic();
 var fts;
 (function () {
 	var setFont = function () {
-		var wd = window.innerWidth>screen.width?screen.width: window.innerWidth;
+		var wd = window.innerWidth<screen.width?screen.width: window.innerWidth;
 		var width = wd>750?750: wd;
 		fts = width/3.75;//23.438
 		console.log("fts="+fts)
@@ -302,10 +302,10 @@ function autoPlayMusic() {
 }
 function musicPlay(isPlay) {
     var media = document.querySelector('#bg-music');
-    if (isPlay && media.paused) {
+    if (media && isPlay && media.paused) {
         media.play();
     }
-    if (!isPlay && !media.paused) {
+    if (media &&!isPlay && !media.paused) {
         media.pause();
     }
 }	

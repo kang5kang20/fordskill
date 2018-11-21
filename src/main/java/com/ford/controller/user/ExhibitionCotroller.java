@@ -194,6 +194,7 @@ public class ExhibitionCotroller {
 			fordExhibitionUserinfo.setTime(time);
 			fordExhUserinfoService.addUserinfo(fordExhibitionUserinfo);
 		} catch (Exception e) {
+			log.error("电话号码"+fordExhibitionUserinfo.getPhone()+"错误信息:"+e.getMessage());
 			modelAndView.addObject("chongfuerror", 1).addObject("name", fordExhibitionUserinfo.getName())
 					.addObject("phone", fordExhibitionUserinfo.getPhone())
 					.addObject("code", fordExhibitionUserinfo.getCode());

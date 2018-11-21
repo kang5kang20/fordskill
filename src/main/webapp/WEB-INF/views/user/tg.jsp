@@ -321,14 +321,16 @@ input, button, select {
 	</div>
 	<script src="${basepath}/static/js/jquery-1.9.1.js"
 		type="text/javascript" charset="utf-8"></script>
+	<script src="${basepath}/static/js/layer/layer.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
 	autoPlayMusic();
 	
 		(function() {
 			var setFont = function() {
-				var wd = window.innerWidth > screen.width ? screen.width : window.innerWidth;
+				var wd = window.innerWidth < screen.width ? screen.width : window.innerWidth;
 				var width = wd > 750 ? 750 : wd;
 				var fts = width / 3.75;//23.438
+		//		alert("fts="+fts+",innerWidth="+window.innerWidth+",screen="+screen.width);
 				console.log("fts=" + fts)
 				var agent = navigator.userAgent;
 				document.documentElement.style.fontSize = fts + 'px'
@@ -549,32 +551,34 @@ input, button, select {
 			$("#vselecttime").hide();
 			$("#vcity").hide();
 			if(username==""){
-				$("#vusername").show();
+			//	$("#vusername").show();
+			    checkLay('请输入姓名！');
 				flag = false;
-			}
-			if(phone==""){
-				$("#vphone").html("<font color='red'>请输入电话号码!</font>");
-				$("#vphone").show();
+			}else if(phone==""){
+			//	$("#vphone").html("<font color='red'>请输入电话号码!</font>");
+			//	$("#vphone").show();
+			    checkLay('请输入电话号码!');
 				flag = false;
 			}else if(phone.length <11){
-				$("#vphone").html("<font color='red'>请输入完整电话号码！</font>");
-				$("#vphone").show();
+			//	$("#vphone").html("<font color='red'>请输入完整电话号码！</font>");
+			//	$("#vphone").show();
+			    checkLay('请输入完整电话号码！');
 				flag = false;
-			}
-			if(agentcode==""){
-				$("#vcity").html("<font color='red'>请选择经销商！</font>");
-				$("#vcity").show();
+			}else	if(vcity==""){
+				checkLay('请选择城市！');
+			//	$("#vcity").show();
+				flag = false;
+			}else if(agentcode==""){
+			//	$("#vcity").html("<font color='red'>请选择经销商！</font>");
+			//	$("#vcity").show();
+				 checkLay('请选择经销商！');
 			//	$("#vagentcode").show();
 				flag = false;
-			}
-			if(vcity==""){
-				$("#vcity").show();
-				flag = false;
-			}
-			if(vselecttime==""){
-				$("#vcity").html("<font color='red'>请选择时间！</font>");
-				$("#vcity").show();
+			}else if(vselecttime==""){
+			//	$("#vcity").html("<font color='red'>请选择时间！</font>");
+			//	$("#vcity").show();
 			//	$("#vselecttime").show();
+			    checkLay('请选择时间！');
 				flag = false;
 			}
 			if(flag==true){
@@ -607,14 +611,19 @@ input, button, select {
 		    }
 		    document.addEventListener('DOMContentLoaded', musicInWeixinHandler);
 		}
+		
 		function musicPlay(isPlay) {
 		    var media = document.querySelector('#bg-music');
-		    if (isPlay && media.paused) {
+		    if (media && isPlay && media.paused) {
 		        media.play();
 		    }
-		    if (!isPlay && !media.paused) {
+		    if (media &&!isPlay && !media.paused) {
 		        media.pause();
 		    }
+		}
+		
+		function checkLay(text){
+			layer.msg(text);
 		}
 	</script>
 </body>
