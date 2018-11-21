@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface FordExhibitionUserinfoCustomMapper {
 
     int updateUserWin(Map<String, Object>map);
-
+    
 }

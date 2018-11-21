@@ -5,7 +5,7 @@
 	<cache type="org.mybatis.caches.ehcache.EhcacheCache" />
 
 
-	<update id="updateUserWin" parameterType="map">
+	<update id="updateSupplierWinCount" parameterType="map">
 		update
 		FORD_EXHIBITION_SUPPLIER
 		set COUNT = #{count}
